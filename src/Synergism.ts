@@ -712,7 +712,16 @@ export const player: Player = {
         singQuarkHepteract3: new SingularityUpgrade(singularityData['singQuarkHepteract3'])
     },
     dailyCodeUsed: false,
-    hepteractAutoCraftPercentage: 50
+    hepteractAutoCraftPercentage: 50,
+    hepteractAutoCraftRatios: 1,
+    hepteractAutoCraftRatiosCr: 1,
+    hepteractAutoCraftRatiosH: 1,
+    hepteractAutoCraftRatiosQ: 1,
+    hepteractAutoCraftRatiosCh: 1,
+    hepteractAutoCraftRatiosAb: 1,
+    hepteractAutoCraftRatiosAc: 1,
+    hepteractAutoCraftRatiosB: 1,
+    hepteractAutoCraftRatiosM: 1
 }
 
 export const blankSave = Object.assign({}, player, {
@@ -1553,7 +1562,9 @@ const loadSynergy = async () => {
         }
 
         DOMCacheGetOrSet('autoHepteractPercentage').textContent = `${player.hepteractAutoCraftPercentage}`
-
+        //DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatiosCr}` + `${player.hepteractAutoCraftRatiosH}` +`${player.hepteractAutoCraftRatiosQ}`
+        //+ `${player.hepteractAutoCraftRatiosCh}` + `${player.hepteractAutoCraftRatiosAb}` + `${player.hepteractAutoCraftRatiosAc}` + `${player.hepteractAutoCraftRatiosB}` + `${player.hepteractAutoCraftRatiosM}`
+        
         toggleTalismanBuy(player.buyTalismanShardPercent);
         updateTalismanInventory();
         calculateObtainium();

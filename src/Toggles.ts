@@ -928,3 +928,30 @@ export const toggleHepteractAutoPercentage = async(): Promise<void> => {
     DOMCacheGetOrSet('autoHepteractPercentage').textContent = `${player.hepteractAutoCraftPercentage}`
     return Alert(`Okay. On Ascension, ${player.hepteractAutoCraftPercentage}% of your Hepteracts will be used in crafting.`)
 }
+export const toggleHepteractAutoRatios = async(): Promise<void> => {
+    const amount = await Prompt(
+        'Enter a number from 0 to 100 (integer only!) to set autocraft percentage. ' +
+        'Every ascension, that percentage of your hepteracts are used to craft equally split ' +
+        'between every hepteract with AUTO ON. Auto crafting also does not consume other resources! ' +
+        '[Except Quarks, of course...]'
+    );
+
+    if (amount === null) {
+        return Alert(`Your percentage is kept at ${player.hepteractAutoCraftRatios}%.`);
+    }
+
+    const isPercentage = amount.endsWith('%');
+    const rawPercentage = isPercentage ? Number(amount.slice(0, -1)) : Number(amount);
+
+    if (Number.isNaN(rawPercentage) || !Number.isFinite(rawPercentage) || !Number.isInteger(rawPercentage)) {
+        return Alert('Value must be a finite, non-decimal number!');
+    } else if (rawPercentage < 0 || rawPercentage > 100) {
+        return Alert('Value must be a number between 0 and 100, inclusive!');
+    } else if (rawPercentage === player.hepteractAutoCraftRatios) {
+        return Alert(`Your percentage is kept at ${player.hepteractAutoCraftRatios}%.`)
+    }
+
+    player.hepteractAutoCraftRatios = rawPercentage
+    DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatios}`
+    return Alert(`Okay. On Ascension, ${player.hepteractAutoCraftRatios}% of your Hepteracts will be used in crafting.`)
+}
