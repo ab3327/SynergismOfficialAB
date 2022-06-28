@@ -928,30 +928,80 @@ export const toggleHepteractAutoPercentage = async(): Promise<void> => {
     DOMCacheGetOrSet('autoHepteractPercentage').textContent = `${player.hepteractAutoCraftPercentage}`
     return Alert(`Okay. On Ascension, ${player.hepteractAutoCraftPercentage}% of your Hepteracts will be used in crafting.`)
 }
-export const toggleHepteractAutoRatios = async(): Promise<void> => {
+/*export const toggleHepteractAutoRatios = async(): Promise<void> => {
     const amount = await Prompt(
-        'Enter a number from 0 to 100 (integer only!) to set autocraft percentage. ' +
+        'Enter a number in each text box to set autocraft ratios. ' +
         'Every ascension, that percentage of your hepteracts are used to craft equally split ' +
         'between every hepteract with AUTO ON. Auto crafting also does not consume other resources! ' +
         '[Except Quarks, of course...]'
     );
 
     if (amount === null) {
-        return Alert(`Your percentage is kept at ${player.hepteractAutoCraftRatios}%.`);
+        return Alert(`Your percentage is kept at ${player.hepteractAutoCraftRatios.Chronos}%.`);
     }
 
-    const isPercentage = amount.endsWith('%');
-    const rawPercentage = isPercentage ? Number(amount.slice(0, -1)) : Number(amount);
-
-    if (Number.isNaN(rawPercentage) || !Number.isFinite(rawPercentage) || !Number.isInteger(rawPercentage)) {
+    if (Number.isNaN(amount) || !Number.isFinite(amount) || !Number.isInteger(amount)) {
         return Alert('Value must be a finite, non-decimal number!');
-    } else if (rawPercentage < 0 || rawPercentage > 100) {
+    } else if (parseInt(amount) < 0 || parseInt(amount) > 100) {
         return Alert('Value must be a number between 0 and 100, inclusive!');
-    } else if (rawPercentage === player.hepteractAutoCraftRatios) {
-        return Alert(`Your percentage is kept at ${player.hepteractAutoCraftRatios}%.`)
+    } else if (parseInt(amount) === player.hepteractAutoCraftRatios.Chronos) {
+        return Alert(`Your percentage is kept at ${player.hepteractAutoCraftRatios.Chronos}%.`)
     }
 
-    player.hepteractAutoCraftRatios = rawPercentage
-    DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatios}`
-    return Alert(`Okay. On Ascension, ${player.hepteractAutoCraftRatios}% of your Hepteracts will be used in crafting.`)
+    player.hepteractAutoCraftRatios.Chronos = Number(amount)
+    DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatios.Chronos}`
+    return Alert(`Okay. On Ascension, ${player.hepteractAutoCraftRatios.Chronos}% of your Hepteracts will be used in crafting.`)
+}*/
+
+export const updateAutoHeptRatios = (i: number) => {
+    switch (i) {
+        case 1: {
+            const t = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputChronos') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Chronos = Math.max(t, 0);
+            DOMCacheGetOrSet('ChronosR').textContent = format(player.hepteractAutoCraftRatios.Chronos, 2, true);
+            return;
+        }
+        case 2: {
+            const u = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputHyper') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Hyper = Math.max(u, 0);
+            DOMCacheGetOrSet('HyperR').textContent = format(player.hepteractAutoCraftRatios.Hyper, 2, true);
+            return;
+        }
+        case 3: {
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputQuark') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Quark = Math.max(v, 0);
+            DOMCacheGetOrSet('QuarkR').textContent = format(player.hepteractAutoCraftRatios.Quark, 2, true);
+            return;
+        }
+        case 4: {
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputChallenge') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Challenge = Math.max(v, 0);
+            DOMCacheGetOrSet('ChallengeR').textContent = format(player.hepteractAutoCraftRatios.Challenge, 2, true);
+            return;
+        }
+        case 5: {
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputAbyss') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Abyss = Math.max(v, 0);
+            DOMCacheGetOrSet('AbyssR').textContent = format(player.hepteractAutoCraftRatios.Abyss, 2, true);
+            return;
+        }
+        case 6: {
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputAccelerator') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Accelerator = Math.max(v, 0);
+            DOMCacheGetOrSet('AcceleratorR').textContent = format(player.hepteractAutoCraftRatios.Accelerator, 2, true);
+            return;
+        }
+        case 7: {
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputBoost') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Boost = Math.max(v, 0);
+            DOMCacheGetOrSet('BoostR').textContent = format(player.hepteractAutoCraftRatios.Boost, 2, true);
+            return;
+        }
+        case 8: {
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputMultiplier') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Multiplier = Math.max(v, 0);
+            DOMCacheGetOrSet('MultiplierR').textContent = format(player.hepteractAutoCraftRatios.Multiplier, 2, true);
+            return;
+        }
+    }
 }

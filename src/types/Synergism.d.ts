@@ -534,15 +534,7 @@ export interface Player {
     singularityUpgrades: Record<keyof typeof singularityData, SingularityUpgrade>
     dailyCodeUsed: boolean
     hepteractAutoCraftPercentage: number
-    hepteractAutoCraftRatios: number
-    hepteractAutoCraftRatiosCr: number
-    hepteractAutoCraftRatiosH: number
-    hepteractAutoCraftRatiosQ: number
-    hepteractAutoCraftRatiosCh: number
-    hepteractAutoCraftRatiosAb: number
-    hepteractAutoCraftRatiosAc: number
-    hepteractAutoCraftRatiosB: number
-    hepteractAutoCraftRatiosM: number
+    hepteractAutoCraftRatios: Record<string, number>
 
 }
 

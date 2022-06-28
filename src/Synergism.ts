@@ -713,15 +713,16 @@ export const player: Player = {
     },
     dailyCodeUsed: false,
     hepteractAutoCraftPercentage: 50,
-    hepteractAutoCraftRatios: 1,
-    hepteractAutoCraftRatiosCr: 1,
-    hepteractAutoCraftRatiosH: 1,
-    hepteractAutoCraftRatiosQ: 1,
-    hepteractAutoCraftRatiosCh: 1,
-    hepteractAutoCraftRatiosAb: 1,
-    hepteractAutoCraftRatiosAc: 1,
-    hepteractAutoCraftRatiosB: 1,
-    hepteractAutoCraftRatiosM: 1
+    hepteractAutoCraftRatios: {
+        Cronos: 1,
+        Hyper: 1,
+        Quark: 1,
+        Challenge: 1,
+        Abyss: 1,
+        Accelerator: 1,
+        Boost: 1,
+        Multipliers: 1
+    }
 }
 
 export const blankSave = Object.assign({}, player, {
@@ -1562,8 +1563,9 @@ const loadSynergy = async () => {
         }
 
         DOMCacheGetOrSet('autoHepteractPercentage').textContent = `${player.hepteractAutoCraftPercentage}`
-        //DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatiosCr}` + `${player.hepteractAutoCraftRatiosH}` +`${player.hepteractAutoCraftRatiosQ}`
-        //+ `${player.hepteractAutoCraftRatiosCh}` + `${player.hepteractAutoCraftRatiosAb}` + `${player.hepteractAutoCraftRatiosAc}` + `${player.hepteractAutoCraftRatiosB}` + `${player.hepteractAutoCraftRatiosM}`
+        //DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatios.Cronos} ` + `${player.hepteractAutoCraftRatios.Hyper} `
+        // + `${player.hepteractAutoCraftRatios.Quark} ` + `${player.hepteractAutoCraftRatios.Challenge} ` + `${player.hepteractAutoCraftRatios.Abyss} ` 
+        // + `${player.hepteractAutoCraftRatios.Accelerator} ` + `${player.hepteractAutoCraftRatios.Boost} ` + `${player.hepteractAutoCraftRatios.Multiplier}`
         
         toggleTalismanBuy(player.buyTalismanShardPercent);
         updateTalismanInventory();
