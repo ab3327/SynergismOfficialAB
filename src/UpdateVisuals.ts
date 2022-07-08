@@ -554,3 +554,9 @@ export const visualUpdateShop = () => {
     DOMCacheGetOrSet('buySingularityQuarksAmount').textContent = `Owned: ${format(player.goldenQuarks)}`
     DOMCacheGetOrSet('buySingularityQuarksButton').textContent = `Buy! ${format(getGoldenQuarkCost().cost)} Quarks Each`
 }
+
+export const updateAutoHeptRatiosDisplay = () => {
+    DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatios.Chronos} ` + `${player.hepteractAutoCraftRatios.Hyper} `
+         + `${player.hepteractAutoCraftRatios.Quark} ` + `${player.hepteractAutoCraftRatios.Challenge} ` + `${player.hepteractAutoCraftRatios.Abyss} ` 
+         + `${player.hepteractAutoCraftRatios.Accelerators} ` + `${player.hepteractAutoCraftRatios.Boost} ` + `${player.hepteractAutoCraftRatios.Multipliers}`
+}

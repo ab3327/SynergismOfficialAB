@@ -12,6 +12,7 @@ import { loadStatisticsCubeMultipliers, loadStatisticsOfferingMultipliers, loadS
 import { corruptionDisplay, corruptionLoadoutTableUpdate, maxCorruptionLevel } from './Corruptions';
 import type { BuildingSubtab, Player } from './types/Synergism';
 import { DOMCacheGetOrSet } from './Cache/DOM';
+import { updateAutoHeptRatiosDisplay } from './UpdateVisuals'
 
 interface TabValue { tabName: keyof typeof tabNumberConst, unlocked: boolean }
 type Tab = Record<number, TabValue>;
@@ -959,48 +960,56 @@ export const updateAutoHeptRatios = (i: number) => {
             const t = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputChronos') as HTMLInputElement).value) || 1;
             player.hepteractAutoCraftRatios.Chronos = Math.max(t, 0);
             DOMCacheGetOrSet('ChronosR').textContent = format(player.hepteractAutoCraftRatios.Chronos, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
         case 2: {
             const u = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputHyper') as HTMLInputElement).value) || 1;
             player.hepteractAutoCraftRatios.Hyper = Math.max(u, 0);
             DOMCacheGetOrSet('HyperR').textContent = format(player.hepteractAutoCraftRatios.Hyper, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
         case 3: {
             const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputQuark') as HTMLInputElement).value) || 1;
             player.hepteractAutoCraftRatios.Quark = Math.max(v, 0);
             DOMCacheGetOrSet('QuarkR').textContent = format(player.hepteractAutoCraftRatios.Quark, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
         case 4: {
             const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputChallenge') as HTMLInputElement).value) || 1;
             player.hepteractAutoCraftRatios.Challenge = Math.max(v, 0);
             DOMCacheGetOrSet('ChallengeR').textContent = format(player.hepteractAutoCraftRatios.Challenge, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
         case 5: {
             const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputAbyss') as HTMLInputElement).value) || 1;
             player.hepteractAutoCraftRatios.Abyss = Math.max(v, 0);
             DOMCacheGetOrSet('AbyssR').textContent = format(player.hepteractAutoCraftRatios.Abyss, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
         case 6: {
-            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputAccelerator') as HTMLInputElement).value) || 1;
-            player.hepteractAutoCraftRatios.Accelerator = Math.max(v, 0);
-            DOMCacheGetOrSet('AcceleratorR').textContent = format(player.hepteractAutoCraftRatios.Accelerator, 2, true);
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputAccelerators') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Accelerators = Math.max(v, 0);
+            DOMCacheGetOrSet('AcceleratorsR').textContent = format(player.hepteractAutoCraftRatios.Accelerators, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
         case 7: {
             const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputBoost') as HTMLInputElement).value) || 1;
             player.hepteractAutoCraftRatios.Boost = Math.max(v, 0);
             DOMCacheGetOrSet('BoostR').textContent = format(player.hepteractAutoCraftRatios.Boost, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
         case 8: {
-            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputMultiplier') as HTMLInputElement).value) || 1;
-            player.hepteractAutoCraftRatios.Multiplier = Math.max(v, 0);
-            DOMCacheGetOrSet('MultiplierR').textContent = format(player.hepteractAutoCraftRatios.Multiplier, 2, true);
+            const v = parseFloat((DOMCacheGetOrSet('hepteractAutoRatiosInputMultipliers') as HTMLInputElement).value) || 1;
+            player.hepteractAutoCraftRatios.Multipliers = Math.max(v, 0);
+            DOMCacheGetOrSet('MultipliersR').textContent = format(player.hepteractAutoCraftRatios.Multipliers, 2, true);
+            updateAutoHeptRatiosDisplay();
             return;
         }
     }

@@ -714,12 +714,12 @@ export const player: Player = {
     dailyCodeUsed: false,
     hepteractAutoCraftPercentage: 50,
     hepteractAutoCraftRatios: {
-        Cronos: 1,
+        Chronos: 1,
         Hyper: 1,
         Quark: 1,
         Challenge: 1,
         Abyss: 1,
-        Accelerator: 1,
+        Accelerators: 1,
         Boost: 1,
         Multipliers: 1
     }
@@ -1563,9 +1563,9 @@ const loadSynergy = async () => {
         }
 
         DOMCacheGetOrSet('autoHepteractPercentage').textContent = `${player.hepteractAutoCraftPercentage}`
-        //DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatios.Cronos} ` + `${player.hepteractAutoCraftRatios.Hyper} `
-        // + `${player.hepteractAutoCraftRatios.Quark} ` + `${player.hepteractAutoCraftRatios.Challenge} ` + `${player.hepteractAutoCraftRatios.Abyss} ` 
-        // + `${player.hepteractAutoCraftRatios.Accelerator} ` + `${player.hepteractAutoCraftRatios.Boost} ` + `${player.hepteractAutoCraftRatios.Multiplier}`
+        DOMCacheGetOrSet('autoHepteractRatios').textContent = `${player.hepteractAutoCraftRatios.Chronos} ` + `${player.hepteractAutoCraftRatios.Hyper} `
+         + `${player.hepteractAutoCraftRatios.Quark} ` + `${player.hepteractAutoCraftRatios.Challenge} ` + `${player.hepteractAutoCraftRatios.Abyss} ` 
+         + `${player.hepteractAutoCraftRatios.Accelerators} ` + `${player.hepteractAutoCraftRatios.Boost} ` + `${player.hepteractAutoCraftRatios.Multipliers}`
         
         toggleTalismanBuy(player.buyTalismanShardPercent);
         updateTalismanInventory();

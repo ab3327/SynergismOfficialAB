@@ -1,4 +1,4 @@
-import { toggleAscStatPerSecond, toggleTabs, toggleSubTab, toggleBuyAmount, toggleAutoTesseracts, toggleSettings, toggleautoreset, toggleautobuytesseract, toggleShops, toggleAutoSacrifice, toggleautoenhance, toggleautofortify, updateRuneBlessingBuyAmount, toggleChallenges, toggleAutoChallengesIgnore, toggleAutoChallengeRun, updateAutoChallenge, toggleResearchBuy, toggleAutoResearch, toggleAntMaxBuy, toggleAntAutoSacrifice, toggleMaxBuyCube, toggleCorruptionLevel, toggleAutoAscend, toggleShopConfirmation, toggleAutoResearchMode, toggleBuyMaxShop, toggleHepteractAutoPercentage, /*toggleHepteractAutoRatios*/ } from './Toggles'
+import { toggleAscStatPerSecond, toggleTabs, toggleSubTab, toggleBuyAmount, toggleAutoTesseracts, toggleSettings, toggleautoreset, toggleautobuytesseract, toggleShops, toggleAutoSacrifice, toggleautoenhance, toggleautofortify, updateRuneBlessingBuyAmount, toggleChallenges, toggleAutoChallengesIgnore, toggleAutoChallengeRun, updateAutoChallenge, toggleResearchBuy, toggleAutoResearch, toggleAntMaxBuy, toggleAntAutoSacrifice, toggleMaxBuyCube, toggleCorruptionLevel, toggleAutoAscend, toggleShopConfirmation, toggleAutoResearchMode, toggleBuyMaxShop, toggleHepteractAutoPercentage, updateAutoHeptRatios, /*toggleHepteractAutoRatios*/ } from './Toggles'
 import { resetrepeat, updateAutoReset, updateTesseractAutoBuyAmount } from './Reset'
 import { player, resetCheck, saveSynergy } from './Synergism'
 import { boostAccelerator, buyAccelerator, buyMultiplier, buyProducer, buyCrystalUpgrades, buyParticleBuilding, buyTesseractBuilding, buyUpgrades, buyRuneBonusLevels, buyAllBlessings } from './Buy'
@@ -544,7 +544,14 @@ export const generateEventHandlers = () => {
 
     DOMCacheGetOrSet('hepteractAutoPercentageButton').addEventListener('click', () => toggleHepteractAutoPercentage())
     // i am going to need inputs for each text box
-    //DOMCacheGetOrSet('hepteractAutoRatiosButton').addEventListener('click', () => toggleHepteractAutoRatios())
+    DOMCacheGetOrSet('hepteractAutoRatiosInputChronos').addEventListener('input', () => updateAutoHeptRatios(1))
+    DOMCacheGetOrSet('hepteractAutoRatiosInputHyper').addEventListener('input', () => updateAutoHeptRatios(2))
+    DOMCacheGetOrSet('hepteractAutoRatiosInputQuark').addEventListener('input', () => updateAutoHeptRatios(3))
+    DOMCacheGetOrSet('hepteractAutoRatiosInputChallenge').addEventListener('input', () => updateAutoHeptRatios(4))
+    DOMCacheGetOrSet('hepteractAutoRatiosInputAbyss').addEventListener('input', () => updateAutoHeptRatios(5))
+    DOMCacheGetOrSet('hepteractAutoRatiosInputAccelerators').addEventListener('input', () => updateAutoHeptRatios(6))
+    DOMCacheGetOrSet('hepteractAutoRatiosInputBoost').addEventListener('input', () => updateAutoHeptRatios(7))
+    DOMCacheGetOrSet('hepteractAutoRatiosInputMultipliers').addEventListener('input', () => updateAutoHeptRatios(8))
 
     // CORRUPTION TAB
     //Part 0: Subtabs
