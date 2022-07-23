@@ -1,4 +1,4 @@
-import { toggleAscStatPerSecond, toggleTabs, toggleSubTab, toggleBuyAmount, toggleAutoTesseracts, toggleSettings, toggleautoreset, toggleautobuytesseract, toggleShops, toggleAutoSacrifice, toggleAutoBuyFragment, toggleautoenhance, toggleautofortify, updateRuneBlessingBuyAmount, toggleSaveOff, toggleChallenges, toggleAutoChallengesIgnore, toggleAutoChallengeRun, updateAutoChallenge, toggleResearchBuy, toggleAutoResearch, toggleAntMaxBuy, toggleAntAutoSacrifice, toggleMaxBuyCube, toggleCorruptionLevel, toggleAutoAscend, toggleShopConfirmation, toggleAutoResearchMode, toggleBuyMaxShop, toggleHideShop, toggleHepteractAutoPercentage } from './Toggles'
+import { toggleAscStatPerSecond, toggleTabs, toggleSubTab, toggleBuyAmount, toggleAutoTesseracts, toggleSettings, toggleautoreset, toggleautobuytesseract, toggleShops, toggleAutoSacrifice, toggleAutoBuyFragment, toggleautoenhance, toggleautofortify, updateRuneBlessingBuyAmount, toggleSaveOff, toggleChallenges, toggleAutoChallengesIgnore, toggleAutoChallengeRun, updateAutoChallenge, toggleResearchBuy, toggleAutoResearch, toggleAntMaxBuy, toggleAntHoverBuy, toggleAntAutoSacrifice, toggleMaxBuyCube, toggleCorruptionLevel, toggleAutoAscend, toggleShopConfirmation, toggleAutoResearchMode, toggleBuyMaxShop, toggleHideShop, toggleHepteractAutoPercentage } from './Toggles'
 import { resetrepeat, updateAutoReset, updateTesseractAutoBuyAmount } from './Reset'
 import { player, resetCheck, saveSynergy } from './Synergism'
 import { boostAccelerator, buyAccelerator, buyMultiplier, buyProducer, buyCrystalUpgrades, buyParticleBuilding, buyTesseractBuilding, buyUpgrades, buyRuneBonusLevels, buyAllBlessings } from './Buy'
@@ -400,6 +400,10 @@ export const generateEventHandlers = () => {
         //Onmouse Events
         DOMCacheGetOrSet(`anttier${index}`).addEventListener('mouseover', () => updateAntDescription(index))
         DOMCacheGetOrSet(`anttier${index}`).addEventListener('mouseover', () => antRepeat(index))
+        DOMCacheGetOrSet(`anttier${index}`).addEventListener('mouseover', () => buyAntProducers(
+        ordinals[index] as Parameters<typeof buyAntProducers>[0],
+        antProducerCostVals[index],index)
+        );
         //Onclick Events
         DOMCacheGetOrSet(`anttier${index}`).addEventListener('click', () => buyAntProducers(
         ordinals[index] as Parameters<typeof buyAntProducers>[0],
@@ -412,6 +416,7 @@ export const generateEventHandlers = () => {
 
         //Onmouse Event
         DOMCacheGetOrSet(`antUpgrade${index}`).addEventListener('mouseover', () => antUpgradeDescription(index))
+        DOMCacheGetOrSet(`antUpgrade${index}`).addEventListener('mouseover', () => buyAntUpgrade(antUpgradeCostVals[index], false, index))        
         //Onclick Event
         DOMCacheGetOrSet(`antUpgrade${index}`).addEventListener('click', () => buyAntUpgrade(antUpgradeCostVals[index], false, index))
 
@@ -420,6 +425,7 @@ export const generateEventHandlers = () => {
     DOMCacheGetOrSet('antSacrifice').addEventListener('click', () => sacrificeAnts())
 
     //Part 4: QoL Buttons
+    DOMCacheGetOrSet('toggleAntHover').addEventListener('click', () => toggleAntHoverBuy())
     DOMCacheGetOrSet('toggleAntMax').addEventListener('click', () => toggleAntMaxBuy())
     DOMCacheGetOrSet('toggleAutoSacrificeAnt').addEventListener('click', () => toggleAntAutoSacrifice(0))
     DOMCacheGetOrSet('autoSacrificeAntMode').addEventListener('click', () => toggleAntAutoSacrifice(1))

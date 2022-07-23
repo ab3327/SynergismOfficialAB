@@ -12,6 +12,7 @@ import { loadStatisticsCubeMultipliers, loadStatisticsOfferingMultipliers, loadS
 import { corruptionDisplay, corruptionLoadoutTableUpdate, maxCorruptionLevel } from './Corruptions';
 import type { BuildingSubtab, Player } from './types/Synergism';
 import { DOMCacheGetOrSet } from './Cache/DOM';
+import { buyAntProducers, buyAntUpgrade } from './Ants';
 
 interface TabValue { tabName: keyof typeof tabNumberConst, unlocked: boolean }
 type Tab = Record<number, TabValue>;
@@ -768,6 +769,41 @@ export const toggleHideShop = () => {
         : 'Hide Maxed: ON';
 
     player.shopHideToggle = !player.shopHideToggle;
+}
+
+export const toggleAntHoverBuy = () => {
+    const el = DOMCacheGetOrSet('toggleAntHover');
+    const antProducerCostVals = ['null','1e700','3','100','10000','1e12','1e36','1e100','1e300']
+    const ordinals = ['null','first','second','third','fourth','fifth','sixth','seventh','eighth'] as const
+    const antUpgradeCostVals = ['null', '100', '100', '1000', '1000', '1e5', '1e6', '1e8', '1e11', '1e15', '1e20', '1e40', '1e100']
+    for (let index = 1; index <= 8 ; index++) {
+        if (player.antHover) {
+            DOMCacheGetOrSet(`anttier${index}`).addEventListener('mouseover', () => buyAntProducers(
+                ordinals[index] as Parameters<typeof buyAntProducers>[0],
+                antProducerCostVals[index],index));
+        } else {
+            DOMCacheGetOrSet(`anttier${index}`).removeEventListener('mouseover', () => buyAntProducers(
+                ordinals[index] as Parameters<typeof buyAntProducers>[0],
+                antProducerCostVals[index],index));
+        }
+        
+    }
+    for (let index = 1; index <= 12; index++) {
+        if (player.antHover) {
+            DOMCacheGetOrSet(`antUpgrade${index}`).addEventListener('mouseover', () => buyAntUpgrade(antUpgradeCostVals[index], false, index));
+        } else {
+            DOMCacheGetOrSet(`antUpgrade${index}`).removeEventListener('mouseover', () => buyAntUpgrade(antUpgradeCostVals[index], false, index));
+        }
+    }
+    if (player.antHover) {
+        player.antHover = false;
+        el.style.border = '2px solid red';
+        el.textContent = 'Hover-to-Buy [OFF]';
+    } else {
+        player.antHover = true;
+        el.style.border = '2px solid green' ;
+        el.textContent = 'Hover-to-Buy [ON]';
+    }
 }
 
 export const toggleAntMaxBuy = () => {

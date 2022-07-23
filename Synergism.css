@@ -1954,6 +1954,17 @@ nav li:hover {
     justify-content: center;
 }
 
+#toggleAntHover {
+    height: 35px;
+    width: 100px;
+    margin-right: 10px;
+    transition-duration: 0.15s;
+}
+
+#toggleAntHover:hover {
+    background-color: #333;
+}
+
 #toggleAntMax {
     height: 35px;
     width: 100px;

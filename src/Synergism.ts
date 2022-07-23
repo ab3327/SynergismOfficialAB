@@ -14,7 +14,7 @@ import { calculateHypercubeBlessings } from './Hypercubes';
 import { calculateTesseractBlessings } from './Tesseracts';
 import { calculateCubeBlessings, calculateObtainium, calculateAnts, calculateRuneLevels, calculateOffline, calculateSigmoidExponential, calculateCorruptionPoints, calculateTotalCoinOwned, calculateTotalAcceleratorBoost, dailyResetCheck, calculateOfferings, calculateAcceleratorMultiplier, calculateTimeAcceleration, exitOffline, calculateGoldenQuarkGain } from './Calculate';
 import { updateTalismanAppearance, toggleTalismanBuy, updateTalismanInventory, buyTalismanEnhance, buyTalismanLevels } from './Talismans';
-import { toggleAscStatPerSecond, toggleChallenges, toggleauto, toggleAutoChallengeModeText, toggleShops, toggleTabs, toggleSubTab, toggleAntMaxBuy, toggleAntAutoSacrifice, toggleAutoAscend, updateAutoChallenge, updateRuneBlessingBuyAmount } from './Toggles';
+import { toggleAscStatPerSecond, toggleChallenges, toggleauto, toggleAutoChallengeModeText, toggleShops, toggleTabs, toggleSubTab, toggleAntMaxBuy, toggleAntAutoSacrifice, toggleAutoAscend, updateAutoChallenge, updateRuneBlessingBuyAmount, toggleAntHoverBuy } from './Toggles';
 import { c15RewardUpdate } from './Statistics';
 import { resetHistoryRenderAllTables } from './History';
 import { calculatePlatonicBlessings } from './PlatonicCubes';
@@ -515,6 +515,7 @@ export const player: Player = {
     autoAntSacTimer: 900,
     autoAntSacrificeMode: 0,
     antMax: false,
+    antHover: false,
 
     ascensionCount: 0,
     ascensionCounter: 0,
@@ -1101,6 +1102,7 @@ const loadSynergy = async () => {
             }
             player.autoAntSacrifice = false;
             player.antMax = false;
+            player.antHover = false;
         }
 
         if (player.firstOwnedAnts < 1 && player.firstCostAnts.gte('1e1200')) {
@@ -1591,6 +1593,7 @@ const loadSynergy = async () => {
         }
 
         for (let i = 1; i <= 2; i++) {
+            toggleAntHoverBuy();
             toggleAntMaxBuy();
             toggleAntAutoSacrifice(0);
             toggleAntAutoSacrifice(1);

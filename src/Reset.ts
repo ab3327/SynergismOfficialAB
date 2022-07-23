@@ -936,6 +936,7 @@ export const singularity = async (): Promise<void> => {
     hold.talismanSix = player.talismanSix
     hold.talismanSeven = player.talismanSeven
     hold.antMax = player.antMax
+    hold.antHover = player.antHover
     hold.autoAntSacrifice = player.autoAntSacrifice
     hold.autoAntSacrificeMode = player.autoAntSacrificeMode
     hold.autoAntSacTimer = player.autoAntSacTimer

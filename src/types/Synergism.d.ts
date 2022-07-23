@@ -403,6 +403,7 @@ export interface Player {
     autoAntSacTimer: number
     autoAntSacrificeMode: number
     antMax: boolean,
+    antHover: boolean,
 
     ascensionCount: number
     ascensionCounter: number
